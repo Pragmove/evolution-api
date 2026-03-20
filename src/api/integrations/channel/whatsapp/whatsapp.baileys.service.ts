@@ -4332,7 +4332,7 @@ export class BaileysStartupService extends ChannelStartupService {
         .filter((participant) => participant.exists)
         .map((participant) => participant.jid);
       const { id } = create.isCommunity
-  ? await this.client.communityCreate(create.subject, participants)
+  ? await this.client.communityCreate(create.subject, create.description || create.subject)
   : await this.client.groupCreate(create.subject, participants);
 
       if (create?.description) {
