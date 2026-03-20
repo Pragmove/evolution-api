@@ -3,6 +3,7 @@ export class CreateGroupDto {
   participants: string[];
   description?: string;
   promoteParticipants?: boolean;
+  isCommunity?: boolean;
 }
 
 export class GroupPictureDto {
