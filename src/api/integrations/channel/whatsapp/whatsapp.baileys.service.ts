@@ -4331,7 +4331,11 @@ export class BaileysStartupService extends ChannelStartupService {
       const participants = (await this.whatsappNumber({ numbers: create.participants }))
         .filter((participant) => participant.exists)
         .map((participant) => participant.jid);
-      const { id } = await this.client.groupCreate(create.subject, participants);
+      const { id } = await this.client.groupCreate(
+  create.subject,
+  participants,
+  create.isCommunity ? { isCommunity: true } : undefined
+);
 
       if (create?.description) {
         await this.client.groupUpdateDescription(id, create.description);
